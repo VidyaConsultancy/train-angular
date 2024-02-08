@@ -1,0 +1,8 @@
+<button
+  mat-icon-button
+  aria-label="ingredient control button"
+  (click)="handleOnClick()"
+>
+  <mat-icon *ngIf="behaviour === 'add'">add</mat-icon>
+  <mat-icon *ngIf="behaviour === 'sub'">remove</mat-icon>
+</button>

@@ -1,0 +1,15 @@
+<div class="burger">
+  <div class="ingredients">
+    <ng-container *ngIf="ingredients; else elseBlock">
+      <div *ngFor="let ingredient of ingredients">
+        <app-ingredient
+          [ingred]="ingredient"
+          (ingredControlEvent)="handleIngredControl($event)"
+        ></app-ingredient>
+      </div>
+    </ng-container>
+    <ng-template #elseBlock>
+      <div>No ingredients available</div>
+    </ng-template>
+  </div>
+</div>

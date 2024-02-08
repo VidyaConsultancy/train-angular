@@ -1,0 +1,11 @@
+<div class="ingredient" *ngIf="ingred">
+  <app-control-button
+    [behaviour]="behaviour.ADD"
+    (controlEvent)="handleControlEvent($event)"
+  ></app-control-button>
+  {{ ingred.name | titlecase }}
+  <app-control-button
+    [behaviour]="behaviour.SUB"
+    (controlEvent)="handleControlEvent($event)"
+  ></app-control-button>
+</div>

@@ -1,26 +1,37 @@
-<!-- <app-layout *ngIf="showLayout">
-  <div content>Here goes content</div>
-</app-layout> -->
-<div class="content">
-  <h1 [title]="appTitle" [ngStyle]="headingStyle">{{ appTitle }}</h1>
-  <button (click)="changeTitle('update reactive burger')">Update title</button>
-  <p *ngIf="ingredients.length === 0">No ingredients as of now</p>
-  <ul *ngIf="ingredients.length">
-    <li
-      *ngFor="let ingredient of ingredients"
-      [ngStyle]="{ color: ingredient === 'patty' ? 'orange' : '#212121' }"
-    >
-      {{ ingredient }}
-    </li>
-  </ul>
-  <div class="terminal" [ngSwitch]="appTitle">
-    <pre *ngSwitchDefault>ng generate component xyz</pre>
-    <pre *ngSwitchCase="'appTitle'">ng add @angular/material</pre>
-    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-    <pre *ngSwitchCase="'test'">ng test</pre>
-    <div *ngSwitchCase="'build'">
-      <pre>ng build</pre>
-    </div>
+<app-layout *ngIf="showLayout">
+  <div content>
+    <app-burger></app-burger>
+    <!-- <div class="content">
+      <h1 [title]="appTitle" [ngStyle]="headingStyle">{{ appTitle }}</h1>
+      <button
+        (click)="changeTitle('update reactive burger')"
+        class="btn"
+        [ngClass]="btnClasses"
+      >
+        Update title
+      </button>
+      <p *ngIf="ingredients.length === 0">No ingredients as of now</p>
+      <ul *ngIf="ingredients.length">
+        <li
+          *ngFor="let ingredient of ingredients"
+          [ngStyle]="{ color: ingredient === 'patty' ? 'orange' : '#212121' }"
+          [ngClass]="{
+            'patty-ing second-ing': ingredient === 'patty'
+          }"
+        >
+          {{ ingredient }}
+        </li>
+      </ul>
+      <div class="terminal" [ngSwitch]="appTitle">
+        <pre *ngSwitchDefault>ng generate component xyz</pre>
+        <pre *ngSwitchCase="'appTitle'">ng add @angular/material</pre>
+        <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
+        <pre *ngSwitchCase="'dependency'">ng add _____</pre>
+        <pre *ngSwitchCase="'test'">ng test</pre>
+        <div *ngSwitchCase="'build'">
+          <pre>ng build</pre>
+        </div>
+      </div>
+    </div> -->
   </div>
-</div>
+</app-layout>

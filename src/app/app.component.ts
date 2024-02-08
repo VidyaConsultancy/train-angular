@@ -12,6 +12,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ingredients: Array<string>;
   showLayout = true;
   headingStyle = { color: 'blue' };
+  btnClasses = ['btn-default', 'btn-success'];
 
   constructor() {
     console.log('constructor');
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   changeTitle(value: string) {
     this.appTitle = value;
-    this.showLayout = !this.showLayout;
+    // this.showLayout = !this.showLayout;
+    this.headingStyle.color = 'green';
   }
 
   generateRandomNumber(): number {
