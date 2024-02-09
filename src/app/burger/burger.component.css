@@ -1,0 +1,30 @@
+.burger {
+  padding: 2rem 3rem;
+  display: flex;
+  gap: 4rem;
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 0 1 50%;
+}
+
+.your-burger {
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.burger-header,
+.burger-footer {
+  display: grid;
+  grid-template-columns: 4fr 1fr 2fr 2fr;
+  gap: 2rem;
+}
+
+.burger-footer-heading {
+  grid-column: 1 / 4;
+}

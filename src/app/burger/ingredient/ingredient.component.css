@@ -1,0 +1,14 @@
+.ingredient {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ingred-name {
+  flex: 40%;
+}
+
+.ingre-price {
+  flex: 20%;
+  min-width: max-content;
+}

@@ -1,0 +1,10 @@
+<div class="burger-item" *ngIf="burgerItem">
+  <span class="burger-item-name">{{ burgerItem.itemName | titlecase }}</span>
+  <span class="burger-item-qty text-right">{{ burgerItem.itemQty }}</span>
+  <div class="burger-item-price text-right">
+    {{ burgerItem.itemPricePerUnit | currency : "INR" }}
+  </div>
+  <div class="burger-item-price text-right">
+    {{ burgerItem.itemTotalPrice | currency : "INR" }}
+  </div>
+</div>

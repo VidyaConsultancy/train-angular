@@ -1,15 +1,39 @@
 <div class="burger">
   <div class="ingredients">
-    <ng-container *ngIf="ingredients; else elseBlock">
-      <div *ngFor="let ingredient of ingredients">
-        <app-ingredient
-          [ingred]="ingredient"
-          (ingredControlEvent)="handleIngredControl($event)"
-        ></app-ingredient>
-      </div>
+    <h3 class="ff-hw fs-big">Ingredients list</h3>
+    <ng-container *ngIf="ingredientMap.size; else elseBlock">
+      <app-ingredient
+        *ngFor="let ingredient of ingredientMap | keyvalue"
+        [ingred]="ingredient.value"
+        (ingredControlEvent)="handleIngredControl($event)"
+      ></app-ingredient>
     </ng-container>
     <ng-template #elseBlock>
       <div>No ingredients available</div>
+    </ng-template>
+  </div>
+  <div class="your-burger">
+    <h3 class="ff-hw fs-big">Your burger</h3>
+    <ng-container *ngIf="burger.size; else noBurger">
+      <div class="burger-header">
+        <span>Item</span>
+        <span class="text-right">Qty</span>
+        <span class="text-right">Price</span>
+        <span class="text-right">Total</span>
+      </div>
+      <hr />
+      <app-burger-item
+        *ngFor="let burgerItem of burger | keyvalue"
+        [burgerItem]="burgerItem.value"
+      ></app-burger-item>
+      <hr />
+      <div class="burger-footer">
+        <span class="burger-footer-heading">Total</span>
+        <span class="text-right">{{ totalPrice | currency : "INR" }}</span>
+      </div>
+    </ng-container>
+    <ng-template #noBurger>
+      <div>Start creating your custom burger</div>
     </ng-template>
   </div>
 </div>

@@ -1,44 +1,42 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // styles: ['h1 { color: tomato}', ''],
-  // template: `<h1>Hello world!</h1>`,
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
-  appTitle: string = 'Reactive Burger';
-  ingredients: Array<string>;
-  showLayout = true;
-  headingStyle = { color: 'blue' };
-  btnClasses = ['btn-default', 'btn-success'];
+export class AppComponent {
+  observable!: Observable<number>;
 
-  constructor() {
-    console.log('constructor');
-    // this.ingredients = [];
-    this.ingredients = ['patty', 'lettuce', 'cheeze', 'mayo', 'veggies'];
+  constructor() {}
+
+  push() {
+    this.observable = new Observable((sub) => {
+      sub.next(1);
+      sub.next(2);
+      sub.next(3);
+      sub.next(4);
+      setTimeout(() => {
+        sub.next(5);
+      }, 1000);
+      sub.next(6);
+    });
   }
 
-  ngOnInit(): void {
-    console.log('ngOnInit');
+  sub1() {
+    this.observable.subscribe((value) => {
+      console.log('sub1', value);
+    });
   }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
+  sub2() {
+    this.observable.subscribe((value) => {
+      console.log('sub2', value);
+    });
   }
-
-  ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
-
-  changeTitle(value: string) {
-    this.appTitle = value;
-    // this.showLayout = !this.showLayout;
-    this.headingStyle.color = 'green';
-  }
-
-  generateRandomNumber(): number {
-    return Math.random();
+  sub3() {
+    this.observable.subscribe((value) => {
+      console.log('sub3', value);
+    });
   }
 }

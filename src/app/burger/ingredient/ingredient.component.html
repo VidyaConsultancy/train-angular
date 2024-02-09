@@ -1,9 +1,12 @@
 <div class="ingredient" *ngIf="ingred">
+  <span class="ff-hw ingred-name">{{ ingred.name | titlecase }}</span>
+  <span class="ff-hw ingred-price">{{
+    ingred.price | currency : "INR" : "symbol"
+  }}</span>
   <app-control-button
     [behaviour]="behaviour.ADD"
     (controlEvent)="handleControlEvent($event)"
   ></app-control-button>
-  {{ ingred.name | titlecase }}
   <app-control-button
     [behaviour]="behaviour.SUB"
     (controlEvent)="handleControlEvent($event)"

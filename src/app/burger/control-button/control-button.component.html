@@ -1,7 +1,8 @@
 <button
-  mat-icon-button
   aria-label="ingredient control button"
   (click)="handleOnClick()"
+  [color]="buttonColor"
+  mat-mini-fab
 >
   <mat-icon *ngIf="behaviour === 'add'">add</mat-icon>
   <mat-icon *ngIf="behaviour === 'sub'">remove</mat-icon>

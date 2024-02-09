@@ -25,3 +25,14 @@
 
 3. Built-in
 4. Custom
+
+## Rxjs
+
+- Observables
+- Observer
+- Subject
+
+  - BehaviorSubject
+  - AsyncSubject
+
+- Operators
