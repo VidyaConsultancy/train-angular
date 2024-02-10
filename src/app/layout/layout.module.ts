@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +13,7 @@ const MaterialModules = [MatToolbarModule, MatIconModule, MatButtonModule];
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LayoutComponent],
-  imports: [CommonModule, ...MaterialModules],
+  imports: [CommonModule, ...MaterialModules, RouterModule.forChild([])],
   exports: [LayoutComponent],
 })
 export class LayoutModule {}

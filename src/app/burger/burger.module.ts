@@ -7,11 +7,18 @@ import { BurgerComponent } from './burger.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { ControlButtonComponent } from './control-button/control-button.component';
 import { BurgerItemComponent } from './burger-item/burger-item.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const MaterialModules = [MatIconModule, MatButtonModule];
 
 @NgModule({
-  declarations: [BurgerComponent, IngredientComponent, ControlButtonComponent, BurgerItemComponent],
+  declarations: [
+    BurgerComponent,
+    IngredientComponent,
+    ControlButtonComponent,
+    BurgerItemComponent,
+    CheckoutComponent,
+  ],
   imports: [CommonModule, ...MaterialModules],
   exports: [BurgerComponent],
 })

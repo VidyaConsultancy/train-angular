@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ingredient } from './models/ingredient';
 import { Behaviour } from './constants/behaviour.enum';
 import { Burger } from './models/burger';
+import { BurgerService } from './services/burger.service';
 
 @Component({
   selector: 'app-burger',
@@ -13,7 +15,7 @@ export class BurgerComponent implements OnInit {
   ingredientMap!: Map<number, Ingredient>;
   totalPrice: number = 0;
 
-  constructor() {
+  constructor(private router: Router, private burgerService: BurgerService) {
     this.ingredientMap = new Map();
     this.burger = new Map();
   }
@@ -31,46 +33,20 @@ export class BurgerComponent implements OnInit {
       const ingred = new Ingredient(id, name, price);
       this.ingredientMap.set(id, ingred);
     });
+    this.burger = this.burgerService.getBurger();
+    this.totalPrice = this.burgerService.getTotalPrice();
   }
 
   handleIngredControl({ id, behaviour }: { id: number; behaviour: Behaviour }) {
     const ingred = this.ingredientMap.get(id);
     if (!ingred) return;
 
-    let burgerItem = this.burger.get(id);
-    if (!burgerItem) {
-      burgerItem = new Burger();
-      burgerItem.itemId = id;
-      burgerItem.itemName = ingred.name;
-      burgerItem.itemPricePerUnit = ingred.price;
-      burgerItem.itemQty = 0;
-      burgerItem.itemTotalPrice = 0;
-    }
-    switch (behaviour) {
-      case Behaviour.ADD:
-        burgerItem.itemQty = burgerItem.itemQty + 1;
-        burgerItem.itemTotalPrice =
-          burgerItem.itemQty * burgerItem.itemPricePerUnit;
-        break;
-      case Behaviour.SUB:
-        if (burgerItem.itemQty === 0) return;
-        burgerItem.itemQty = burgerItem.itemQty - 1;
-        burgerItem.itemTotalPrice =
-          burgerItem.itemQty * burgerItem.itemPricePerUnit;
-        if (burgerItem.itemQty === 0) {
-          this.burger.delete(id);
-          this.calculateTotalPrice();
-          return;
-        }
-        break;
-    }
-    this.burger.set(id, burgerItem);
-    this.calculateTotalPrice();
+    this.burgerService.handleIngredControl(ingred, behaviour);
+    this.burger = this.burgerService.getBurger();
+    this.totalPrice = this.burgerService.getTotalPrice();
   }
 
-  calculateTotalPrice() {
-    this.totalPrice = Array.from(this.burger).reduce((curr, [, burgerItem]) => {
-      return curr + burgerItem.itemTotalPrice;
-    }, 0);
+  placeOrder() {
+    this.router.navigateByUrl('/checkout');
   }
 }

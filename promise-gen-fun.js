@@ -64,3 +64,14 @@ const genObj = gen();
 for (const value of genObj) {
   console.log('iterator value', value);
 }
+
+// object literal
+const person = { lname: 'Doe', fname: 'Doe' };
+class Person {
+  constructor(fname, lname) {
+    this.fname = fname;
+    this.lname = lname;
+  }
+}
+const p1 = new Person('Jane', 'Doe');
+console.log(person, p1);

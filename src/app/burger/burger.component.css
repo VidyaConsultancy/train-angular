@@ -1,6 +1,7 @@
 .burger {
-  padding: 2rem 3rem;
+  padding: 1rem 0.5rem;
   display: flex;
+  flex-direction: column;
   gap: 4rem;
 }
 
@@ -8,14 +9,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  flex: 0 1 50%;
+  flex: auto;
 }
 
 .your-burger {
-  flex: 0 1 50%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: auto;
 }
 
 .burger-header,
@@ -27,4 +28,24 @@
 
 .burger-footer-heading {
   grid-column: 1 / 4;
+}
+
+.burger-actions {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .burger {
+    padding: 2rem 3rem;
+    flex-direction: row;
+  }
+
+  .ingredients {
+    flex: 0 1 50%;
+  }
+
+  .your-burger {
+    flex: 0 1 50%;
+  }
 }

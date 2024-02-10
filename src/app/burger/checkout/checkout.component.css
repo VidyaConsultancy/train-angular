@@ -1,0 +1,22 @@
+.your-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: auto;
+}
+
+.burger-header,
+.burger-footer {
+  display: grid;
+  grid-template-columns: 4fr 1fr 2fr 2fr;
+  gap: 2rem;
+}
+
+.burger-footer-heading {
+  grid-column: 1 / 4;
+}
+
+.burger-actions {
+  text-align: right;
+  margin-top: 1rem;
+}

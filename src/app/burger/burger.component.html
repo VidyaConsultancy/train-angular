@@ -31,6 +31,11 @@
         <span class="burger-footer-heading">Total</span>
         <span class="text-right">{{ totalPrice | currency : "INR" }}</span>
       </div>
+      <div class="burger-actions">
+        <button mat-flat-button color="primary" (click)="placeOrder()">
+          Place order
+        </button>
+      </div>
     </ng-container>
     <ng-template #noBurger>
       <div>Start creating your custom burger</div>
