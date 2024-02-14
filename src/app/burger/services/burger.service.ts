@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Behaviour } from '../constants/behaviour.enum';
 import { Burger } from '../models/burger';
 import { Ingredient } from '../models/ingredient';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // platform, any
 })
 export class BurgerService {
   private burger: Map<number, Burger>;
   private totalPrice: number;
+  private itemCount$: BehaviorSubject<number>;
 
   constructor() {
     this.burger = new Map();
     this.totalPrice = 0;
+    this.itemCount$ = new BehaviorSubject(0);
+  }
+
+  public getItemCount(): Observable<number> {
+    return this.itemCount$.asObservable();
+  }
+
+  updateItemCount(count: number): void {
+    this.itemCount$.next(count);
   }
 
   handleIngredControl(ingred: Ingredient, behaviour: Behaviour) {
@@ -41,11 +52,13 @@ export class BurgerService {
         if (burgerItem.itemQty === 0) {
           this.burger.delete(id);
           this.calculateTotalPrice();
+          this.updateItemCount(this.burger.size);
           return;
         }
         break;
     }
     this.burger.set(id, burgerItem);
+    this.updateItemCount(this.burger.size);
     this.calculateTotalPrice();
   }
 
