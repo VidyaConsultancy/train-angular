@@ -75,3 +75,7 @@ class Person {
 }
 const p1 = new Person('Jane', 'Doe');
 console.log(person, p1);
+
+const xhr = new XMLHttpRequest();
+
+fetch()

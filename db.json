@@ -1,3 +1,36 @@
 {
-  "users": []
+  "users": [],
+  "ingredients": [
+    {
+      "name": "Bread Top",
+      "price": 25,
+      "id": 1
+    },
+    {
+      "name": "Bread Bottom",
+      "price": 25,
+      "id": 2
+    },
+    {
+      "name": "Cheese",
+      "price": 50,
+      "id": 3
+    },
+    {
+      "name": "Veggies",
+      "price": 20,
+      "id": 4
+    },
+    {
+      "name": "Patty",
+      "price": 15,
+      "id": 5
+    },
+    {
+      "name": "Mayo",
+      "price": 30,
+      "id": 6
+    }
+  ],
+  "orders": []
 }

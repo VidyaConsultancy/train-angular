@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, takeLast, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { Behaviour } from '../constants/behaviour.enum';
 import { Burger } from '../models/burger';
 import { Ingredient } from '../models/ingredient';
+import { environment } from '../../../environments/environment';
+
+class Response<T, E> {
+  success!: boolean;
+  message!: string;
+  data!: T;
+  error!: E;
+  resource!: string;
+}
 
 @Injectable({
   providedIn: 'root', // platform, any
@@ -13,10 +23,14 @@ export class BurgerService {
   private totalPrice: number;
   private itemCount$: BehaviorSubject<number>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.burger = new Map();
     this.totalPrice = 0;
     this.itemCount$ = new BehaviorSubject(0);
+  }
+
+  fetchIngredientsList(): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>(`${environment.apiBaseUrl}/ingredients`);
   }
 
   public getItemCount(): Observable<number> {

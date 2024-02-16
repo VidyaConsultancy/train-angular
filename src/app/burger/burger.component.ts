@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Ingredient } from './models/ingredient';
 import { Behaviour } from './constants/behaviour.enum';
 import { Burger } from './models/burger';
@@ -21,17 +22,10 @@ export class BurgerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const tempIngredients: [string, number][] = [
-      ['bread top', 10],
-      ['bread bottom', 10],
-      ['veggies', 5],
-      ['patty', 15],
-      ['cheese', 20],
-    ];
-    tempIngredients.forEach(([name, price], index) => {
-      const id = index + 1;
-      const ingred = new Ingredient(id, name, price);
-      this.ingredientMap.set(id, ingred);
+    this.burgerService.fetchIngredientsList().subscribe((data) => {
+      data.forEach((ingred) => {
+        this.ingredientMap.set(ingred.id, ingred);
+      });
     });
     this.burger = this.burgerService.getBurger();
     this.totalPrice = this.burgerService.getTotalPrice();
