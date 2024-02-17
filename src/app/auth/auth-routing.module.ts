@@ -20,6 +20,11 @@ const routes: Routes = [
         component: RegisterComponent,
         title: 'Burger King | Register',
       },
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
     ],
   },
 ];

@@ -1,14 +1,30 @@
 <mat-toolbar color="primary">
   <h3>Burger King</h3>
   <span class="spacer"></span>
-  <a mat-button routerLink="/">Home</a>
-  <a mat-button routerLink="/burger">Burger</a>
-  <button
-    mat-stroked-button
-    [matBadge]="itemCount$ | async"
-    matBadgePosition="after"
-    matBadgeColor="accent"
-  >
-    Cart
-  </button>
+  <menu class="nav">
+    <li>
+      <a mat-button routerLink="/">Home</a>
+    </li>
+    <ng-container *ngIf="isAuthenticated$ | async; else notAuthenticated">
+      <li>
+        <a mat-button routerLink="/burger">Burger</a>
+      </li>
+      <li>
+        <button
+          mat-stroked-button
+          [matBadge]="itemCount$ | async"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+        >
+          Cart
+        </button>
+      </li>
+      <li>
+        <button mat-button (click)="logout()">Logout</button>
+      </li>
+    </ng-container>
+    <ng-template #notAuthenticated>
+      <a mat-button routerLink="/auth/register">Register</a>
+    </ng-template>
+  </menu>
 </mat-toolbar>

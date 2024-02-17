@@ -1,1 +1,57 @@
-<p>login works!</p>
+<form
+  class="auth-form"
+  novalidate
+  (ngSubmit)="handleLogin()"
+  [formGroup]="user"
+>
+  <h3 class="auth-title">Welcome, continue to login</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input
+      matInput
+      placeholder="Enter your email"
+      type="email"
+      name="email"
+      formControlName="email"
+    />
+    <mat-error *ngIf="user.controls['email'].invalid">{{
+      getErrorMessage()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Create a password"
+      type="password"
+      name="password"
+      formControlName="password"
+    />
+    <mat-error
+      *ngIf="
+        user.controls['password'].invalid &&
+        user.controls['password'].hasError('required')
+      "
+      >Password is required</mat-error
+    >
+    <mat-error
+      *ngIf="
+        user.controls['password'].invalid &&
+        user.controls['password'].hasError('minlength')
+      "
+      >Password should contain at least 8 chars</mat-error
+    >
+    <mat-error
+      *ngIf="
+        user.controls['password'].invalid &&
+        user.controls['password'].hasError('maxlength')
+      "
+      >Password should not contain more than 15 chars</mat-error
+    >
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" [disabled]="user.invalid">
+      Login
+    </button>
+  </div>
+</form>

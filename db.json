@@ -1,5 +1,11 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "john.doe@mailinator.com",
+      "password": "$2a$10$XDqyM4a2EyCEH828jB5MnudxDdq5SY68FvY6adeELmZcDpjXt0sMu",
+      "id": 1
+    }
+  ],
   "ingredients": [
     {
       "name": "Bread Top",

@@ -1,1 +1,9 @@
-<p>auth works!</p>
+<div class="auth">
+  <div class="auth-buttons">
+    <a mat-stroked-button color="primary" routerLink="login">Login</a>
+    <a mat-flat-button color="accent" routerLink="register">Register</a>
+  </div>
+  <div class="auth-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

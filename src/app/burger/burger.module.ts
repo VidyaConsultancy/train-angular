@@ -8,6 +8,7 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 import { ControlButtonComponent } from './control-button/control-button.component';
 import { BurgerItemComponent } from './burger-item/burger-item.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { SearchComponent } from './search/search.component';
 
 const MaterialModules = [MatIconModule, MatButtonModule];
 
@@ -18,6 +19,7 @@ const MaterialModules = [MatIconModule, MatButtonModule];
     ControlButtonComponent,
     BurgerItemComponent,
     CheckoutComponent,
+    SearchComponent,
   ],
   imports: [CommonModule, ...MaterialModules],
   exports: [BurgerComponent],
