@@ -1,5 +1,10 @@
 <div class="ingredient" *ngIf="ingred">
-  <span class="ff-hw ingred-name">{{ ingred.name | titlecase }}</span>
+  <span class="ff-hw ingred-name" (click)="goToIngredientDetail()">{{
+    ingred.name | titlecase
+  }}</span>
+  <a [routerLink]="['/ingredients', ingred.id]" [queryParams]="{ key: 'value' }"
+    >Go</a
+  >
   <span class="ff-hw ingred-price">{{
     ingred.price | currency : "INR" : "symbol"
   }}</span>
