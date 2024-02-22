@@ -17,8 +17,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user: FormGroup<Login<FormControl>>;
-  // email: FormControl;
-  // password: FormControl;
 
   constructor(
     private fb: FormBuilder,
@@ -36,20 +34,6 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-    // this.user = new FormGroup({
-    //   email: new FormControl('', [Validators.email, Validators.required]),
-    //   password: new FormControl('', [
-    //     Validators.minLength(8),
-    //     Validators.maxLength(15),
-    //     Validators.required,
-    //   ]),
-    // });
-    // this.email.valueChanges.subscribe((val) => {
-    //   console.log(this.email);
-    // });
-    // this.password.valueChanges.subscribe((val) => {
-    //   console.log(this.password);
-    // });
   }
 
   ngOnInit(): void {}
